@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi primer formulario</title>
+</head>
+
+<body>
+
+    <form action="" method="post" id="formulario">
+
+        <table width="650">
+
+            <tr>
+                <td width="150"></td>
+                <td align="center">
+                    <img src="logTdea.png" width="70" alt="Logo">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td align="center">
+                    Tecnologico de Antioquia - Institucion Universitaria
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td align="center">
+                    Mi primer formulario
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="tipoDocumento">
+                        Tipo de documento
+                    </label>
+                </td>
+                <td>
+                    <select id="tipoDocumento" name="tipoDocumento">
+                        <option value="">Seleccione...</option>
+                        <option value="CC">Cedula de ciudadania</option>
+                        <option value="TI">Tarjeta de identidad</option>
+                        <option value="CE">Cedula de extranjeria</option>
+                        <option value="PAS">Pasaporte</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="numeroDocumento">
+                        Numero de documento
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="text" 
+                        id="numeroDocumento"
+                        name="numeroDocumento"
+                        size="50">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="nombres">
+                        Nombres
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="text" 
+                        id="nombres"
+                        name="nombres"
+                        size="50">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="apellidos">
+                        Apellidos
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="text" 
+                        id="apellidos"
+                        name="apellidos"
+                        size="50">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="direccion">
+                        Direccion
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="text" 
+                        id="direccion"
+                        name="direccion"
+                        size="50">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="ciudad">
+                        Ciudad
+                    </label>
+                </td>
+                <td>
+                    <select id="ciudad" name="ciudad">
+                        <option value="">Seleccione...</option>
+                        <option value="medellin">Medellin</option>
+                        <option value="bogota">Bogota</option>
+                        <option value="cali">Cali</option>
+                        <option value="cucuta">Cucuta</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="fechaNacimiento">
+                        Fecha de nacimiento
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="date"
+                        id="fechaNacimiento"
+                        name="fechaNacimiento">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="correo">
+                        Correo electronico
+                    </label>
+                </td>
+                <td>
+                    <input 
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        size="50">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <br>
+                    <p id="avisoDuplicado" style="color: red; font-weight: bold; display: none;">
+                        Ya existe un registro con ese tipo y numero de documento. Se cargaron sus datos.
+                    </p>
+                    <button type="button" id="btnGuardar" disabled>Guardar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" id="btnActualizar" disabled>Actualizar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" id="btnEliminar" disabled>Eliminar</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+<table border="1" id="tablaResultados">
+<thead>
+    <tr>
+        <th>Tipo Documento</th>
+        <th>Numero de Documento</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>Fecha de nacimiento</th>
+        <th>Email</th>
+    </tr>
+</thead>
+
+<tbody id="tablaPersonas">
+</tbody>
+</table>
+
+<script src="./eventos.js"></script>
+</body>
+
+</html>
