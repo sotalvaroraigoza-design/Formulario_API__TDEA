@@ -1,6 +1,5 @@
-## Estructura
+# Estructura
 
-```
 mi-servidor/
 ├── config/db.js                      # conexión a MySQL
 ├── controllers/usuario.controller.js # recibe la petición y responde (HTTP)
@@ -10,14 +9,11 @@ mi-servidor/
 ├── app.js                            # arranque del servidor
 ├── database.sql                      # script para crear la BD y la tabla
 └── package.json
-```
 
 ## Puesta en marcha
 
-   ```
    npm install
    npm start
-   ```
    El servidor queda en `http://localhost:3000`.
 
 ## Endpoints

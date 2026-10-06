@@ -1,7 +1,7 @@
 {
   "name": "mi-servidor",
   "version": "1.0.0",
-  "description": "Backend CRUD de usuarios/personas con Node.js, Express y MySQL",
+  "description": "Backend Formulario de registro de usuarios/personas con Node.js, Express y MySQL, Docker ",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
