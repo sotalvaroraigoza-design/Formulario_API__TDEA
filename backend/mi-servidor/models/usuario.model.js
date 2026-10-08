@@ -1,65 +1,55 @@
-const db = require('../config/db');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
 
-const COLUMNAS = `
-    id,
-    tipo_documento   AS tipoDocumento,
-    numero_documento AS numeroDocumento,
-    nombres,
-    apellidos,
-    direccion,
-    ciudad,
-    fecha_nacimiento AS fechaNacimiento,
-    correo
-`;
+const Usuario = sequelize.define('Usuario', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    tipoDocumento: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
+        field: 'tipo_documento'
+    },
+    numeroDocumento: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+        field: 'numero_documento'
+    },
+    nombres: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    apellidos: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    direccion: {
+        type: DataTypes.STRING(150),
+        allowNull: false
+    },
+    ciudad: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    fechaNacimiento: {
+        type: DataTypes.DATEONLY, // llega y sale como 'YYYY-MM-DD'
+        allowNull: false,
+        field: 'fecha_nacimiento'
+    },
+    correo: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    }
+}, {
+    tableName: 'usuarios',
+    timestamps: false,
+    indexes: [
+        // el mismo tipo + número de documento no se puede repetir
+        { name: 'uq_documento', unique: true, fields: ['tipo_documento', 'numero_documento'] }
+    ]
+});
 
-exports.getAll = (callback) => {
-    db.query(`SELECT ${COLUMNAS} FROM usuarios ORDER BY id`, callback);
-};
+module.exports = Usuario;
 
-exports.getById = (id, callback) => {
-    db.query(`SELECT ${COLUMNAS} FROM usuarios WHERE id = ?`, [id], callback);
-};
-
-exports.create = (usuario, callback) => {
-    db.query(
-        `INSERT INTO usuarios
-            (tipo_documento, numero_documento, nombres, apellidos, direccion, ciudad, fecha_nacimiento, correo)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-        [
-            usuario.tipoDocumento,
-            usuario.numeroDocumento,
-            usuario.nombres,
-            usuario.apellidos,
-            usuario.direccion,
-            usuario.ciudad,
-            usuario.fechaNacimiento,
-            usuario.correo
-        ],
-        callback
-    );
-};
-
-exports.update = (id, usuario, callback) => {
-    db.query(
-        `UPDATE usuarios SET
-            tipo_documento=?, numero_documento=?, nombres=?, apellidos=?,
-            direccion=?, ciudad=?, fecha_nacimiento=?, correo=?
-         WHERE id=?`,
-        [
-            usuario.tipoDocumento,
-            usuario.numeroDocumento,
-            usuario.nombres,
-            usuario.apellidos,
-            usuario.direccion,
-            usuario.ciudad,
-            usuario.fechaNacimiento,
-            usuario.correo,
-            id
-        ],
-        callback
-    );
-};
-
-exports.delete = (id, callback) => {
-    db.query('DELETE FROM usuarios WHERE id=?', [id], callback);
-};

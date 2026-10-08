@@ -1,7 +1,7 @@
 {
   "name": "mi-servidor",
   "version": "1.0.0",
-  "description": "Backend Formulario de registro de usuarios/personas con Node.js, Express y MySQL, Docker ",
+  "description": "Backend formulario de registro de usuarios/personas con Node.js, Express y Sequelize (MySQL / SQL Server, Docker)",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -10,6 +10,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "mysql2": "^3.11.0"
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3",
+    "tedious": "^18.2.0"
   }
 }
